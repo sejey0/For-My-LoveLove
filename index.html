@@ -37,6 +37,16 @@
       body.letter-opened {
         overflow-y: auto;
         height: auto;
+        padding: 0;
+        min-height: auto;
+        align-items: flex-start;
+        background: linear-gradient(
+          135deg,
+          #ff9a9e 0%,
+          #fecfef 50%,
+          #fecfef 100%
+        );
+        background-attachment: fixed;
       }
 
       /* Sparkle effect */
@@ -534,13 +544,14 @@
         border-radius: 25px;
         box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15),
           0 0 0 1px rgba(255, 182, 193, 0.2);
-        padding: 60px 50px;
-        margin: 50px 20px;
+        padding: 60px 50px 0 50px;
+        margin: 50px 20px 0 20px;
         position: relative;
         z-index: 1;
         opacity: 0;
         transform: scale(0.8);
         pointer-events: none;
+
         transition: opacity 1s ease, transform 1s ease;
       }
 
@@ -1151,25 +1162,6 @@
       .wish-display.show {
         display: block;
         animation: fadeIn 0.5s;
-      }
-
-      /* Footer */
-      .footer {
-        text-align: center;
-        margin-top: 50px;
-        padding-top: 30px;
-        border-top: 1px solid #ffecef;
-      }
-
-      .footer p {
-        color: #aaa;
-        font-size: 0.9em;
-      }
-
-      .footer-hearts {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-        animation: heartBeat 2s infinite;
       }
 
       @media (max-width: 600px) {
@@ -1928,12 +1920,6 @@
       <div class="signature">
         Forever yours,<br />
         Your Loving Partner ❤️
-      </div>
-
-      <div class="divider">
-        <div class="divider-line"></div>
-        <span class="divider-icon">💖</span>
-        <div class="divider-line"></div>
       </div>
     </div>
 
