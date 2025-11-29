@@ -1091,48 +1091,6 @@
         font-size: 1.05em;
       }
 
-      /* Music Player */
-      .music-player {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 100;
-      }
-
-      .music-btn {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-        border: none;
-        color: white;
-        font-size: 1.5em;
-        cursor: pointer;
-        box-shadow: 0 5px 20px rgba(255, 117, 140, 0.4);
-        transition: transform 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .music-btn:hover {
-        transform: scale(1.1);
-      }
-
-      .music-btn.playing {
-        animation: pulse-music 1s infinite;
-      }
-
-      @keyframes pulse-music {
-        0%,
-        100% {
-          box-shadow: 0 5px 20px rgba(255, 117, 140, 0.4);
-        }
-        50% {
-          box-shadow: 0 5px 30px rgba(255, 117, 140, 0.7);
-        }
-      }
-
       /* Wish form */
       .wish-section {
         margin: 40px 0;
@@ -1510,6 +1468,14 @@
     </style>
   </head>
   <body>
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+      <source
+        src="audio/Tahanan (c) El Manu [Official Audio].mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
     <!-- PIN Security Overlay -->
     <div class="pin-overlay" id="pinOverlay">
       <!-- Flower Decorations -->
@@ -1921,13 +1887,6 @@
       </div>
     </div>
 
-    <!-- Music Player -->
-    <div class="music-player">
-      <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
-        🎵
-      </button>
-    </div>
-
     <!-- Modal -->
     <div class="modal" id="loveModal">
       <div class="modal-content">
@@ -2151,6 +2110,11 @@
       function openEnvelope() {
         const envelopeWrapper = document.getElementById("envelopeWrapper");
         const letterContainer = document.getElementById("letterContainer");
+        const bgMusic = document.getElementById("bgMusic");
+
+        // Play background music
+        bgMusic.volume = 0.5;
+        bgMusic.play().catch((e) => console.log("Audio play failed:", e));
 
         envelopeWrapper.classList.add("opening");
 
