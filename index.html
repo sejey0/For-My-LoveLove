@@ -551,11 +551,24 @@
 
       .big-falling-heart {
         position: absolute;
-        top: -50px;
-        opacity: 0.3;
+        top: -100px;
+        width: 80px;
+        height: 80px;
+        opacity: 0.85;
         animation: bigHeartFall linear infinite;
         z-index: 0;
-        filter: drop-shadow(0 2px 4px rgba(255, 105, 135, 0.3));
+        filter: drop-shadow(0 6px 12px rgba(255, 105, 135, 0.5));
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
       }
 
       @keyframes bigHeartFall {
@@ -564,13 +577,13 @@
           opacity: 0;
         }
         10% {
-          opacity: 0.3;
+          opacity: 0.85;
         }
         50% {
           transform: translateY(50vh) rotate(180deg) scale(1.1);
         }
         90% {
-          opacity: 0.3;
+          opacity: 0.85;
         }
         100% {
           transform: translateY(110vh) rotate(360deg) scale(1);
@@ -2246,16 +2259,23 @@
       // Create big falling hearts in body
       function createBigFallingHearts() {
         const container = document.getElementById("bigHeartsContainer");
-        const hearts = ["💕", "💗", "💖", "❤️", "💓", "💝", "💘", "💞"];
+        const images = [
+          "images/IMG_20251109_200530_356.jpg",
+          "images/IMG_20251109_200541_882.jpg",
+        ];
 
         for (let i = 0; i < 12; i++) {
-          const heart = document.createElement("span");
+          const heart = document.createElement("div");
           heart.className = "big-falling-heart";
-          heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+          heart.style.backgroundImage = `url('${
+            images[Math.floor(Math.random() * images.length)]
+          }')`;
           heart.style.left = Math.random() * 100 + "%";
           heart.style.animationDuration = Math.random() * 10 + 8 + "s";
           heart.style.animationDelay = Math.random() * 15 + "s";
-          heart.style.fontSize = Math.random() * 30 + 25 + "px";
+          const size = Math.random() * 40 + 50;
+          heart.style.width = size + "px";
+          heart.style.height = size + "px";
           container.appendChild(heart);
         }
       }
